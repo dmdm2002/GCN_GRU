@@ -12,3 +12,5 @@ class handler(param):
 
         elif self.RunType == 1:
             tester().run()
+            
+starter = handler()

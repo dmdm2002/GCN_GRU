@@ -2,6 +2,7 @@
 
 # 1. original code and paper
 code : https://gitlab.com/hackshields/rna-paper
+__________________________________________________
 paper : https://www.sciencedirect.com/science/article/pii/S1319157821002871
 
 # 2. model

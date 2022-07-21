@@ -9,6 +9,7 @@ from util.AVG_Meter import AverageMeter
 from util.DataLoader import Loader
 from torch.utils.data import TensorDataset, Dataset, DataLoader, random_split
 from sklearn.model_selection import train_test_split, KFold, StratifiedKFold
+import os
 
 
 class trainer(param):
@@ -30,7 +31,7 @@ class trainer(param):
         train_losses = []
         eval_losses = []
         train_inputs, train_adj, train_labels = Loader()(type=0)
-        public_inputs, private_inputs, public_adj, private_adj = Loader()(type=1)
+        # public_inputs, private_inputs, public_adj, private_adj = Loader()(type=1)
 
         train_dataset = TensorDataset(train_inputs, train_adj, train_labels)
 
@@ -67,4 +68,5 @@ class trainer(param):
             print(f'|| [now epoch : {epoch}/{self.EPOCH}] || --> {avg_loss}')
             print('--------------------------------------------------------------------------------------')
             train_losses.append(avg_loss)
+            os.makedirs(f"{self.CKP_PATH}", exist_ok=True)
             torch.save(model.state_dict(), f'{self.CKP_PATH}/{epoch}.pt')
